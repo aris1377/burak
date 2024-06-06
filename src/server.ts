@@ -11,4 +11,7 @@ dotenv.config();
 //yani bizni .ENV  variabllar ichidan DOTENV oqishga imkon hosil qildi
 
 //MONGO_URL ni test qilib olamiz
-// console.log("MONGO_URL:", process.env.MONGO_URL);
+//console.log("MONGO_URL:", process.env.MONGO_URL);
+
+//DATABASE KETMA-KETLIGI
+//CLUSTER => DATABASE => COLLECTION => DOCUMENT

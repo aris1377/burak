@@ -1,18 +1,18 @@
+// H-TASK: 
 // shunday function tuzing, u integerlardan iborat, arrayni argument sifatida qabul qilib,
 // faqat positive qiymatlarni olib string holatda return qilsin
 // MASALAN: getPositive([1, -4, 2]) return qiladi "12"
 
-// function getPositive(numbers: number[]): string {
-//   const positiveStrings = numbers
-//     .filter((num) => num > 0)
-//     .map((num) => num.toString());
+function getPositive(numbers: number[]): string {
+  const positiveStrings = numbers
+    .filter((num) => num > 0)
+    .map((num) => num.toString());
 
-//   return positiveStrings.join("");
-// }
+  return positiveStrings.join("");
+}
 
-// // Example usage
-// const result = getPositive([1, -4, 2]);
-// console.log(result); // Output: "12"
+const result = getPositive([1, -4, 2]);
+console.log(result);
 
 // MIT 14 TASK G:
 
