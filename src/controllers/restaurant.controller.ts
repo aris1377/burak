@@ -12,35 +12,33 @@ import { T } from "../libs/types/common";
 // methodalr nomlari turli xil bolishi mn va maxsus bir type xosil qilamiz
 // va <scr> ichida <libs> degan folder ochamiz
 // va biz common.ts dagi <T> typeni kiritamiz
-const memberController: T = {};
-
-//RACT LOYIHAMIZ UCHUN
+const restaurantController: T = {};
 
 //3. <memberController> objectini ichida bir qator methodni qurib olamiz
 // router <"/"> dan kelyapti
-// memberController.goHome = (req: Request, res: Response) => {
-//   try {
-//     res.send("Home Page");
-//   } catch (err) {
-//     console.log("Error, goHome:", err);
-//   }
-// };
+restaurantController.goHome = (req: Request, res: Response) => {
+  try {
+    res.send("Home Page");
+  } catch (err) {
+    console.log("Error, goHome:", err);
+  }
+};
 //router <"/login"> dan kelyapti
-// memberController.getLogin = (req: Request, res: Response) => {
-//   try {
-//     res.send("Login Page");
-//   } catch (err) {
-//     console.log("Error, getLogin:", err);
-//   }
-// };
+restaurantController.getLogin = (req: Request, res: Response) => {
+  try {
+    res.send("Login Page");
+  } catch (err) {
+    console.log("Error, getLogin:", err);
+  }
+};
 //router <"/signup"> dan kelyapti
-// memberController.getSignup = (req: Request, res: Response) => {
-//   try {
-//     res.send("Signup Page");
-//   } catch (err) {
-//     console.log("Error, getSignup:", err);
-//   }
-// };
+restaurantController.getSignup = (req: Request, res: Response) => {
+  try {
+    res.send("Signup Page");
+  } catch (err) {
+    console.log("Error, getSignup:", err);
+  }
+};
 
 //4. <memberController> routerda chaqirib olish uchun export qilib olamiz
-export default memberController;
+export default restaurantController;

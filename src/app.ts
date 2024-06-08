@@ -15,6 +15,9 @@ const app = express();
 //5*(router)-ROUTES ni chaqirib olamiz
 import router from "./router";
 
+//router adminni import qilib olamiz(restaurantController)
+import routerAdmin from "./routerAdmin"
+
 //dirname ni qiymatini tekshirib olamiz va bizga ushbu qiymatini beradi
 //__dirname bu node.js ni variable hisoblanadi
 //dirname: C:\Users\bek77\Desktop\Burak\src
@@ -45,7 +48,8 @@ app.set("view engine", "ejs");
 //4--ROUTES
 //6*(router)Kelayotgan zaproslarni routerga yuborishini takidlaymiz
 //middleware pettern - sababi <"/"> slashdan kelayotgan requestlarni router folderimizga yonaltiryapti
-app.use("/", router); //bu desgin pettern middleware deyiladi
+app.use("/admin", routerAdmin); // SSR: EJS
+app.use("/", router); // SPA: REACT//bu desgin pettern middleware deyiladi
 
 //4 appni ishga tushurish uchun export qillib olishimiz kerak
 //5 server.ts da uni import qilib olamiz
