@@ -7,6 +7,9 @@ import { Request, Response } from "express";
 //shunaqa qisak T interface ni qolga olib beradi
 import { T } from "../libs/types/common";
 
+//(model, memberService) import qilib olamiz
+import MemberService from "../models/Member.service";
+
 //1. <memberController> objectini xosil qilib olamiz
 //va uning ichiga turli xil mrthodalni kiritamiz
 // methodalr nomlari turli xil bolishi mn va maxsus bir type xosil qilamiz
