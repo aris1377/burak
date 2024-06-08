@@ -1,4 +1,6 @@
-//1 Express ni ornatib olamiz
+//1 Express ni ornatib olamiz va axpress typni ornatib olamiz
+//npm i express@4.17.3, npm i express@4.17.3 -D
+
 //2 Express ni integratsiyasini amalga oshiramiz
 import express from "express";
 
@@ -7,16 +9,21 @@ import path from "path";
 
 //expressni 4 ta bolimi mavjud
 //1--ENTRANCE (kirish qismi)
+// EXPRESS ni chaqirib olamiz
 const app = express();
 
+//5*(router)-ROUTES ni chaqirib olamiz
+import router from "./router";
+
 //dirname ni qiymatini tekshirib olamiz va bizga ushbu qiymatini beradi
+//__dirname bu node.js ni variable hisoblanadi
 //dirname: C:\Users\bek77\Desktop\Burak\src
 // console.log("dirname:", __dirname);
 
-//3. middleverblarni integratsiyasini amalga oshiramiz 
+//3. middleverblarni integratsiyasini amalga oshiramiz
 //<App>ni < use > degan methodini chaqiramiz
 //bu middleverb pettern hisoblanadi
-//<(__dirname, "public"> nu narsa bizga static folderga aylantirib beradi
+//<(__dirname, "public"> bu narsa bizga static folderga aylantirib beradi
 app.use(express.static(path.join(__dirname, "public")));
 //bu <form> lardan malumot kesa kegan malumotlarni oqib beradi
 //inputdan kelaotgan malumotlarni yani frotdan backendga jonatilyotgan malumotlarni oqib beradi
@@ -36,6 +43,9 @@ app.set("view engine", "ejs");
 //src folderini ichida views folderini yasab olamiz
 
 //4--ROUTES
+//6*(router)Kelayotgan zaproslarni routerga yuborishini takidlaymiz
+//middleware pettern - sababi <"/"> slashdan kelayotgan requestlarni router folderimizga yonaltiryapti
+app.use("/", router); //bu desgin pettern middleware deyiladi
 
 //4 appni ishga tushurish uchun export qillib olishimiz kerak
 //5 server.ts da uni import qilib olamiz

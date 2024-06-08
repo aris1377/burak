@@ -17,7 +17,7 @@ dotenv.config();
 //CLUSTER => DATABASE => COLLECTION => DOCUMENTS
 
 //5. mongoose orqali mongoDbha ulanamiz
-//moongoe package ichidan mongoose ni charib olamiz
+//moongose package ichidan mongoose ni charib olamiz
 import mongoose from "mongoose";
 
 //app.ts ni import qilib olamiz
