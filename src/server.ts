@@ -40,6 +40,7 @@ mongoose
     app.listen(PORT, () => {
       console.log(`The server is running successfully on port: ${PORT}`);
     });
-  })
+  }) 
+  //catch - agar ulanishda muommo bosa <cath> orqali error boladi
   //biz hamma malumotni <env> ichian olyapmiz yani PORT VA URL larni
   .catch((err) => console.log("ERROR on connection MongDB", err));
