@@ -16,7 +16,7 @@ const app = express();
 import router from "./router";
 
 //router adminni import qilib olamiz(restaurantController)
-import routerAdmin from "./routerAdmin"
+import routerAdmin from "./router-admin"
 
 //moorganni import qilib olamiz
 import morgan from "morgan";
