@@ -16,7 +16,7 @@ dotenv.config();
 //DATABASE KETMA-KETLIGI
 //CLUSTER => DATABASE => COLLECTION => DOCUMENTS
 
-//5. mongoose orqali mongoDbha ulanamiz
+//5. mongoose orqali mongoDbga ulanamiz
 //moongose package ichidan mongoose ni charib olamiz
 import mongoose from "mongoose";
 

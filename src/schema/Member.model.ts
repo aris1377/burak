@@ -8,7 +8,8 @@ import { MemberStatus, MemberType } from "../libs/enums/member.enum";
 // 2.Schema ni xosil qilib olamiz
 // schema ni chaqirib olamiz
 // va biz defenision qismini yozib olamiz
-// va ermodelingdab membersni type larini yozib olamiz
+// va ermodelingdab membersni type larini yozib olamiz\
+// memberSchema ni type class boaldi
 const memberSchema = new Schema(
   {
     memberType: {
@@ -27,6 +28,8 @@ const memberSchema = new Schema(
     },
     //memberNick ni kiritib olamiz
     memberNick: {
+      // <String> javasc grup type bor ushnandan kelyapti
+      //moongose typesc ni tushunmaydi
       type: String,
       // Uniqe sharti bu bitta memberNick bir kishiga tegishli bolishi kk
       //
@@ -71,3 +74,5 @@ const memberSchema = new Schema(
 );
 // schema modulega aylantitib olamiz endi
 export default mongoose.model("Member", memberSchema);
+
+//memberSchema; databaseda collection yaratib beryapti faqat koplikda

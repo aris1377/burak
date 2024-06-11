@@ -21,6 +21,8 @@ const restaurantController: T = {};
 // router <"/"> dan kelyapti
 restaurantController.goHome = (req: Request, res: Response) => {
   try {
+    //qoyishdan sabab shunga qadar hech qanday muommo bolmagini tekshirish
+    console.log("goHome");
     res.send("Home Page");
   } catch (err) {
     console.log("Error, goHome:", err);
@@ -28,7 +30,11 @@ restaurantController.goHome = (req: Request, res: Response) => {
 };
 //router <"/login"> dan kelyapti
 restaurantController.getLogin = (req: Request, res: Response) => {
+  //asosan Request va Response kirib kelganda try catch ishlatialdi
+  // va malum bir mantiqlar kritiladi
   try {
+    //qoyishdan sabab shunga qadar hech qanday muommo bolmagini tekshirish
+    console.log("getLogin");
     res.send("Login Page");
   } catch (err) {
     console.log("Error, getLogin:", err);
@@ -37,6 +43,8 @@ restaurantController.getLogin = (req: Request, res: Response) => {
 //router <"/signup"> dan kelyapti
 restaurantController.getSignup = (req: Request, res: Response) => {
   try {
+    //qoyishdan sabab shunga qadar hech qanday muommo bolmagini tekshirish
+    console.log("getSignup");
     res.send("Signup Page");
   } catch (err) {
     console.log("Error, getSignup:", err);

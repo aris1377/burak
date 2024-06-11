@@ -18,6 +18,10 @@ import router from "./router";
 //router adminni import qilib olamiz(restaurantController)
 import routerAdmin from "./routerAdmin"
 
+//moorganni import qilib olamiz
+import morgan from "morgan";
+import { MORGAN_FORMAT } from "./libs/config";
+
 //dirname ni qiymatini tekshirib olamiz va bizga ushbu qiymatini beradi
 //__dirname bu node.js ni variable hisoblanadi
 //dirname: C:\Users\bek77\Desktop\Burak\src
@@ -27,12 +31,18 @@ import routerAdmin from "./routerAdmin"
 //<App>ni < use > degan methodini chaqiramiz
 //bu middleverb pettern hisoblanadi
 //<(__dirname, "public"> bu narsa bizga static folderga aylantirib beradi
+// bizga kerakli bolgan image, css lar pulic folderini ichida boladi
 app.use(express.static(path.join(__dirname, "public")));
+
 //bu <form> lardan malumot kesa kegan malumotlarni oqib beradi
 //inputdan kelaotgan malumotlarni yani frotdan backendga jonatilyotgan malumotlarni oqib beradi
 app.use(express.urlencoded({ extended: true }));
-//rest api sifatida request bolayotgan datalarini yani bodysida keloytgan datalarni otkazishga ruxsat beryapmiz
+
+//rest api sifatida request bolayotgan datalarini yani bodysida keloytgan jyson datalarni otkazishga ruxsat beryapmiz
 app.use(express.json());
+
+//morganni middlevere integration qilamiz
+app.use(morgan(MORGAN_FORMAT));
 
 //2--SESSIONS
 

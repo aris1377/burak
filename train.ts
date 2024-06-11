@@ -7,17 +7,17 @@
 // MASALAN: getDigits("m14i1t"); return qiladi "141"
 // Yuqoridagi misolda, berilayotgan parametr tarkibida ham harf ham son mavjud.
 // Natija sifatida text tarkibidagi sonlarni aniqlab ularni string ko'rinishida qaytarmoqdamiz
-function getDigits(inputString: string): string {
-  let digits = "";
-  for (let i = 0; i < inputString.length; i++) {
-    if (inputString[i] >= "0" && inputString[i] <= "9") {
-      digits += inputString[i];
-    }
-  }
-  return digits;
-}
-let result = getDigits("m14i1t");
-console.log(result);
+// function getDigits(inputString: string): string {
+//   let digits = "";
+//   for (let i = 0; i < inputString.length; i++) {
+//     if (inputString[i] >= "0" && inputString[i] <= "9") {
+//       digits += inputString[i];
+//     }
+//   }
+//   return digits;
+// }
+// let result = getDigits("m14i1t");
+// console.log(result);
 
 // H-TASK:
 // shunday function tuzing, u integerlardan iborat, arrayni argument sifatida qabul qilib,
@@ -65,3 +65,13 @@ console.log(result);
 
 // const numbers = [5, 21, 12, 21, 8];
 // console.log(getHighestIndex(numbers));
+
+/* ProjectStandards:
+- Logging standards (morgan orqali log qilyapmiz)
+- Naming standards 
+    camelCase => funtion, variable, method   goHome
+    PascalCase => class                      MemberService
+    snake_case => css                        button_style
+    kebab-case => folderlarga
+-Error handling standards - bu loyihamizda sodir bolayoygan errorlani handle qilish mehanizmi hisoblanadi
+*/
