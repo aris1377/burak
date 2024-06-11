@@ -51,5 +51,27 @@ restaurantController.getSignup = (req: Request, res: Response) => {
   }
 };
 
+//post uchun methodni qurib olamiz
+//processLogin defin quramiz
+restaurantController.processLogin = (req: Request, res: Response) => {
+  try {
+    //qoyishdan sabab shunga qadar hech qanday muommo bolmagini tekshirish
+    console.log("processLogin");
+    res.send("Done");
+  } catch (err) {
+    console.log("Error, getSignup:", err);
+  }
+};
+//signup uchun methodni qurib olamiz han get ham post methodlari, bu yer define qismi
+restaurantController.processSignup = (req: Request, res: Response) => {
+  try {
+    //qoyishdan sabab shunga qadar hech qanday muommo bolmagini tekshirish
+    console.log("processSignup");
+    res.send("Done");
+  } catch (err) {
+    console.log("Error, processSignup:", err);
+  }
+};
+
 //4. <memberController> routerda chaqirib olish uchun export qilib olamiz
 export default restaurantController;

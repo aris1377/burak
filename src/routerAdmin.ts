@@ -21,6 +21,7 @@ import restaurantController from "./controllers/restaurant.controller";
 //   res.send("Home Page");
 // });
 
+/** Restaurant*/
 //6*memberController.goHome methodini chaqiramiz
 routerAdmin.get("/", restaurantController.goHome);
 
@@ -31,7 +32,11 @@ routerAdmin.get("/", restaurantController.goHome);
 // });
 
 //7*memberController.getLogin methodini chaqiramiz
-routerAdmin.get("/login", restaurantController.getLogin);
+routerAdmin
+  .get("/login", restaurantController.getLogin)
+  //post methodidan misol qilib koramiz
+  //processLogin call qasmi
+  .post("/login", restaurantController.processLogin);
 
 //SignUp page
 // router.get("/signup", (req: Request, res: Response) => {
@@ -40,7 +45,13 @@ routerAdmin.get("/login", restaurantController.getLogin);
 // });
 
 //7*memberController.getsignup methodini chaqiramiz
-routerAdmin.get("/signup", restaurantController.getSignup);
+routerAdmin
+  .get("/signup", restaurantController.getSignup)
+  //processSigup call qasmi
+  .post("/signup", restaurantController.processSignup);
+
+/**Product */
+/**User */
 
 //4. Roiterlarni ApiTS ga export qilamiz
 export default routerAdmin;
