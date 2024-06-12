@@ -75,3 +75,10 @@
     kebab-case => folderlarga
 -Error handling standards - bu loyihamizda sodir bolayoygan errorlani handle qilish mehanizmi hisoblanadi
 */
+
+/**
+ Eng kop ishlatiladiga Api:
+  1.Traditional Api - Burak
+  2.Rest Api        - Burak
+  3.GraphQl Api
+ */
