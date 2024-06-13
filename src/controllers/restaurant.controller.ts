@@ -1,3 +1,4 @@
+import { LoginInput } from "./../libs/types/member";
 //biz controllerlarni doim objectlar orqali xosil qilamiz.
 
 // router.ts dan kelyapti
@@ -55,13 +56,24 @@ restaurantController.getSignup = (req: Request, res: Response) => {
 
 //post uchun methodni qurib olamiz
 //processLogin defin quramiz
-restaurantController.processLogin = (req: Request, res: Response) => {
+restaurantController.processLogin = async (req: Request, res: Response) => {
   try {
     //qoyishdan sabab shunga qadar hech qanday muommo bolmagini tekshirish
     console.log("processLogin");
-    res.send("Done");
+    //req.body dan qanday malumot keloyhanai tekshiramiz
+    console.log("body:", req.body);
+    // yangi input nomli yangi variable xoil qilamiz
+    // type ni LoginInput deb belgilaymiz
+    const input: LoginInput = req.body;
+
+    //Yangi instns hosil qilamiz
+    const memberService = new MemberService();
+    const result = await memberService.processLogin(input);
+
+    res.send(result);
   } catch (err) {
     console.log("Error, getSignup:", err);
+    res.send(err);
   }
 };
 //signup uchun methodni qurib olamiz han get ham post methodlari, bu yer define qismi

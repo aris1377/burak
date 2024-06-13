@@ -1,5 +1,5 @@
 import { MemberType } from "../libs/enums/member.enum";
-import { Member } from "./../libs/types/member";
+import { LoginInput, Member } from "./../libs/types/member";
 import MemberModel from "../schema/Member.model";
 import { MemberInput } from "../libs/types/member";
 import Errors, { HttpCode, Message } from "../libs/Errors";
@@ -40,15 +40,25 @@ class MemberService {
       throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
     }
 
-    //classdan instance qilib olish yoli bn qilib koramiz
-    //tempResult degan variable xosil qilamiz
-    //this.memberModel classidan instance olamiz
-    // va constuctoriga inputni pass qilamiz
-    // const tempResult = new this.memberModel(input);
-    //va bizga kerakli bolgan reultni tempResultning asyc methodi bolmish save ni ishlatamiz
-    // const result = await tempResult.save();
-
     //memberPassword response da qatnashmasligi uchun
+  }
+
+  //Yangi instns hosil qilamiz
+  // Bu MemberService dan hosil qilingan object xisoblanadi
+  public async processLogin(input: LoginInput): Promise<Member> {
+    const member = await this.memberModel
+      .findOne(
+        { memberNick: input.memberNick },
+        { memberNick: 1, memberPassword: 1 }
+      )
+      .exec();
+    if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMEBER_NICK);
+
+    const isMatch = input.memberPassword === member.memberPassword;
+    if (!isMatch) {
+      throw new Errors(HttpCode.BAD_REQUEST, Message.WRONG_PASSWORD);
+    }
+    return await this.memberModel.findById(member._id).exec();
   }
 }
 export default MemberService;
