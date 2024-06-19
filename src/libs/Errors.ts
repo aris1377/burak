@@ -30,15 +30,15 @@ class Errors extends Error {
   // message yuqoridagi message qabul qiladi
   public message: Message;
 
-  //erprni hozil qilishda statuscode ni beramiz va kodimiz Http codedan bolishi kk
-  //statusMessage beramiz type message boladi
+  static standard = {
+    code: HttpCode.INTERNAL_SERVER_ERROR,
+    message: Message.SOMETHING_WENT_WRONG,
+  };
+
   constructor(statusCode: HttpCode, statusMessage: Message) {
     //superclassga tegishli malumotlarni yozamiiz
     super();
-    // va yuqorida ishlargan 2 ta propertyni olamiz
-    //code ni statusCode ga tenglaymiz
     this.code = statusCode;
-    //message ni messagega tenglaymiz
     this.message = statusMessage;
   }
 }

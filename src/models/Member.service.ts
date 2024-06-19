@@ -11,9 +11,44 @@ class MemberService {
   constructor() {
     this.memberModel = MemberModel;
   }
-  //yangi method hosil qilamiz
-  // methodimiz async method bolmasa promise ishlatmaymiz
-  //processSignup ni defenition qismini tashkillshtirib olamiz
+
+  /**SPA */
+  public async signup(input: MemberInput): Promise<Member> {
+    const salt = await bcrypt.genSalt();
+    input.memberPassword = await bcrypt.hash(input.memberPassword, salt);
+
+    try {
+      const result = await this.memberModel.create(input);
+      //memberPassword response da qatnashmasligi uchun
+      result.memberPassword = "";
+      return result as Member;
+    } catch (err) {
+      console.error("Error, model:signup", err);
+      throw new Errors(HttpCode.BAD_REQUEST, Message.USED_NICK_PHONE);
+    }
+  }
+
+  public async login(input: LoginInput): Promise<Member> {
+    const member = await this.memberModel
+      .findOne(
+        { memberNick: input.memberNick },
+        { memberNick: 1, memberPassword: 1 }
+      )
+      .exec();
+    if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMEBER_NICK);
+
+    const isMatch = await bcrypt.compare(
+      input.memberPassword,
+      member.memberPassword
+    );
+    // const isMatch = input.memberPassword === member.memberPassword;
+    if (!isMatch) {
+      throw new Errors(HttpCode.BAD_REQUEST, Message.WRONG_PASSWORD);
+    }
+    return (await this.memberModel.findById(member._id).exec()) as Member;
+  }
+
+  /** SSR */
   public async processSignup(input: MemberInput): Promise<Member> {
     //faqat bitta restaran kiritilish uchun mantiq yozamiz
     const exist = await this.memberModel
@@ -25,30 +60,19 @@ class MemberService {
     //shart kiirtamiz
     if (exist) throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
     //ozimini errorlarni ishlaitishimiz
-    console.log("before:", input.memberPassword);
     const salt = await bcrypt.genSalt();
     input.memberPassword = await bcrypt.hash(input.memberPassword, salt);
-    console.log("after:", input.memberPassword);
 
     try {
-      //burak restoranizni boshlaymiz
-      //memberModel - class
-      //create - static method
-      //input ni qoysak burak restaranimizni databasega borib xosil qilib
-      //javobini resultga qaytaradi
       const result = await this.memberModel.create(input);
       //memberPassword response da qatnashmasligi uchun
       result.memberPassword = "";
-      return result;
+      return result as Member;
     } catch (err) {
       throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
     }
-
-    //memberPassword response da qatnashmasligi uchun
   }
 
-  //Yangi instns hosil qilamiz
-  // Bu MemberService dan hosil qilingan object xisoblanadi
   public async processLogin(input: LoginInput): Promise<Member> {
     const member = await this.memberModel
       .findOne(
@@ -66,7 +90,7 @@ class MemberService {
     if (!isMatch) {
       throw new Errors(HttpCode.BAD_REQUEST, Message.WRONG_PASSWORD);
     }
-    return await this.memberModel.findById(member._id).exec();
+    return (await this.memberModel.findById(member._id).lean().exec()) as Member;
   }
 }
 export default MemberService;

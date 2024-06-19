@@ -8,31 +8,31 @@
 
 // Yuqoridag misolda argument sifatida kiritilayotgan array tarkibida 4 soni ko'p takrorlanganligi uchun 4'ni return qilmoqda.
 
-function majorityElement(arr: number[]): number | null {
-  const countMap: Map<number, number> = new Map();
+// function majorityElement(arr: number[]): number | null {
+//   const countMap: Map<number, number> = new Map();
 
-  for (const num of arr) {
-    if (countMap.has(num)) {
-      countMap.set(num, countMap.get(num)! + 1);
-    } else {
-      countMap.set(num, 1);
-    }
-  }
+//   for (const num of arr) {
+//     if (countMap.has(num)) {
+//       countMap.set(num, countMap.get(num)! + 1);
+//     } else {
+//       countMap.set(num, 1);
+//     }
+//   }
 
-  let majority: number | null = null;
-  let maxCount = 0;
+//   let majority: number | null = null;
+//   let maxCount = 0;
 
-  countMap.forEach((count, num) => {
-    if (count > maxCount) {
-      maxCount = count;
-      majority = num;
-    }
-  });
+//   countMap.forEach((count, num) => {
+//     if (count > maxCount) {
+//       maxCount = count;
+//       majority = num;
+//     }
+//   });
 
-  return majority;
-}
+//   return majority;
+// }
 
-console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4]));
+// console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4]));
 
 // 39th Lesson TASK H2
 
@@ -117,4 +117,9 @@ console.log(majorityElement([1, 2, 3, 4, 5, 4, 3, 4]));
   1.Traditional Api - Burak
   2.Rest Api        - Burak
   3.GraphQl Api
+ */
+
+  /**
+ Traditional FD -> SSR -> EJS
+ Modern FD      -> SPA -> REACT (LIBERY)
  */

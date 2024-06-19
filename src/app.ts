@@ -58,7 +58,7 @@ app.set("view engine", "ejs");
 //4--ROUTES
 //6*(router)Kelayotgan zaproslarni routerga yuborishini takidlaymiz
 //middleware pettern - sababi <"/"> slashdan kelayotgan requestlarni router folderimizga yonaltiryapti
-app.use("/admin", routerAdmin); // SSR: EJS
+app.use("/admin", routerAdmin); // BSSR: EJS
 app.use("/", router); // SPA: REACT//bu desgin pettern middleware deyiladi
 
 //4 appni ishga tushurish uchun export qillib olishimiz kerak

@@ -54,6 +54,29 @@ restaurantController.getSignup = (req: Request, res: Response) => {
   }
 };
 
+//signup uchun methodni qurib olamiz han get ham post methodlari, bu yer define qismi
+restaurantController.processSignup = async (req: Request, res: Response) => {
+  try {
+    //qoyishdan sabab shunga qadar hech qanday muommo bolmagini tekshirish
+    console.log("processSignup");
+
+    const newMember: MemberInput = req.body;
+    //enum ichidan mavjud bolgan qiymat
+    newMember.memberType = MemberType.RESTAURANT;
+
+    
+    const memberService = new MemberService();
+    
+    const result = await memberService.processSignup(newMember);
+
+    res.send(result);
+  } catch (err) {
+    console.log("Error, processSignup:", err);
+    //error osilib qolmasligi uchun shuni kiritamiz yani bir xil nom bn kiritganimizda
+    res.send(err);
+  }
+};
+
 //post uchun methodni qurib olamiz
 //processLogin defin quramiz
 restaurantController.processLogin = async (req: Request, res: Response) => {
@@ -76,34 +99,7 @@ restaurantController.processLogin = async (req: Request, res: Response) => {
     res.send(err);
   }
 };
-//signup uchun methodni qurib olamiz han get ham post methodlari, bu yer define qismi
-restaurantController.processSignup = async (req: Request, res: Response) => {
-  try {
-    //qoyishdan sabab shunga qadar hech qanday muommo bolmagini tekshirish
-    console.log("processSignup");
 
-    //newMember ochib olamiz
-    //type ni shakkilantitb olishimi kk
-    //va type ni memberinput deb belgilab olamiz <member.ts> ichidan
-    const newMember: MemberInput = req.body;
-    //enum ichidan mavjud bolgan qiymat
-    newMember.memberType = MemberType.RESTAURANT;
-
-    //servismodelni ishlatishni boshlaymiz
-    //variable ni member clasimiz orqali hosil qilamiz
-    //classimizdan instns olibb memberService ga tenglashtiryapmiz
-    const memberService = new MemberService();
-    //memberService methodini chaqirib olamiz
-    //xosil bolgan objectni ishlatish mumkin
-    const result = await memberService.processSignup(newMember);
-
-    res.send(result);
-  } catch (err) {
-    console.log("Error, processSignup:", err);
-    //error osilib qolmasligi uchun shuni kiritamiz yani bir xil nom bn kiritganimizda
-    res.send(err);
-  }
-};
 
 //4. <memberController> routerda chaqirib olish uchun export qilib olamiz
 export default restaurantController;

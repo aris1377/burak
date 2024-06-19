@@ -6,41 +6,46 @@ import { Request, Response } from "express";
 //2 import qilib olamiz
 //shunaqa qisak T interface ni qolga olib beradi
 import { T } from "../libs/types/common";
+import MemberService from "../models/Member.service";
+import { LoginInput, Member, MemberInput } from "../libs/types/member";
+import Errors from "../libs/Errors";
 
-//1. <memberController> objectini xosil qilib olamiz
-//va uning ichiga turli xil mrthodalni kiritamiz
-// methodalr nomlari turli xil bolishi mn va maxsus bir type xosil qilamiz
-// va <scr> ichida <libs> degan folder ochamiz
-// va biz common.ts dagi <T> typeni kiritamiz
+const memberService = new MemberService();
+
 const memberController: T = {};
 
-//RACT LOYIHAMIZ UCHUN
+memberController.signup = async (req: Request, res: Response) => {
+  try {
+    //qoyishdan sabab shunga qadar hech qanday muommo bolmagini tekshirish
+    console.log("signup");
+    const input: MemberInput = req.body,
+          result: Member = await memberService.signup(input);
+      //Tokens
 
-//3. <memberController> objectini ichida bir qator methodni qurib olamiz
-// router <"/"> dan kelyapti
-// memberController.goHome = (req: Request, res: Response) => {
-//   try {
-//     res.send("Home Page");
-//   } catch (err) {
-//     console.log("Error, goHome:", err);
-//   }
-// };
-//router <"/login"> dan kelyapti
-// memberController.getLogin = (req: Request, res: Response) => {
-//   try {
-//     res.send("Login Page");
-//   } catch (err) {
-//     console.log("Error, getLogin:", err);
-//   }
-// };
-//router <"/signup"> dan kelyapti
-// memberController.getSignup = (req: Request, res: Response) => {
-//   try {
-//     res.send("Signup Page");
-//   } catch (err) {
-//     console.log("Error, getSignup:", err);
-//   }
-// };
+    res.json({ member: result });
+  } catch (err) {
+    console.log("Error, signup:", err);
+    if (err instanceof Errors) res.status(err.code).json(err);
+    //error osilib qolmasligi uchun shuni kiritamiz yani bir xil nom bn kiritganimizda
+    else res.status(Errors.standard.code).json(Errors.standard);
+  }
+};
 
+memberController.login = async (req: Request, res: Response) => {
+  try {
+    //qoyishdan sabab shunga qadar hech qanday muommo bolmagini tekshirish
+    console.log("login");
+    const input: LoginInput = req.body,
+      result = await memberService.login(input);
+    //Tokens and password
+
+    res.json({ member: result });
+  } catch (err) {
+    console.log("Error, login:", err);
+    if (err instanceof Errors) res.status(err.code).json(err);
+    //error osilib qolmasligi uchun shuni kiritamiz yani bir xil nom bn kiritganimizda
+    else res.status(Errors.standard.code).json(Errors.standard);
+  }
+};
 //4. <memberController> routerda chaqirib olish uchun export qilib olamiz
 export default memberController;
