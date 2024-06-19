@@ -13,8 +13,6 @@ import restaurantController from "./controllers/restaurant.controller";
 /** Restaurant*/
 //6*memberController.goHome methodini chaqiramiz
 routerAdmin.get("/", restaurantController.goHome);
-
-
 //7*memberController.getLogin methodini chaqiramiz
 routerAdmin
   .get("/login", restaurantController.getLogin)
