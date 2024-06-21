@@ -7,7 +7,6 @@ const routerAdmin = express.Router();
 //5*(memberController) import qilib olamiz
 import restaurantController from "./controllers/restaurant.controller";
 routerAdmin.get("/", restaurantController.goHome);
-//7*memberController.getLogin methodini chaqiramiz
 routerAdmin
   .get("/login", restaurantController.getLogin)
   .post("/login", restaurantController.processLogin);
@@ -16,6 +15,8 @@ routerAdmin
 routerAdmin
   .get("/signup", restaurantController.getSignup)
   .post("/signup", restaurantController.processSignup);
+
+routerAdmin.get("/check-me", restaurantController.checkAuthSession);
 
 //4. Roiterlarni ApiTS ga export qilamiz
 export default routerAdmin;
