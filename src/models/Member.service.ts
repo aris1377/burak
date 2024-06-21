@@ -52,11 +52,8 @@ class MemberService {
   public async processSignup(input: MemberInput): Promise<Member> {
     //faqat bitta restaran kiritilish uchun mantiq yozamiz
     const exist = await this.memberModel
-      .findOne({
-        memberType: MemberType.RESTAURANT,
-      })
+      .findOne({ memberType: MemberType.RESTAURANT })
       .exec();
-    console.log("exist:", exist);
     //shart kiirtamiz
     if (exist) throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
     //ozimini errorlarni ishlaitishimiz
@@ -90,7 +87,10 @@ class MemberService {
     if (!isMatch) {
       throw new Errors(HttpCode.BAD_REQUEST, Message.WRONG_PASSWORD);
     }
-    return (await this.memberModel.findById(member._id).lean().exec()) as Member;
+    return (await this.memberModel
+      .findById(member._id)
+      .lean()
+      .exec()) as Member;
   }
 }
 export default MemberService;
