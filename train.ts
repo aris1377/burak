@@ -1,3 +1,27 @@
+// 2024-06-21
+// MIT 14
+// TASK K:
+
+// Berilayotgan parametr tarkibida nechta unli harf bor
+// ekanligini aniqlovchi function tuzing
+
+// MASALAN: countVowels("string"); return 1
+
+// Yuqoridagi misolda 'string' so'zi tarkibida yagona unli harf 'i'
+// bo'lganligi uchun '1'ni qaytarmoqda
+
+function countVowels(str: string): number {
+  const unliHarflar = "aeiouAEIOU";
+  let count = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (unliHarflar.includes(str[i])) {
+      count++;
+    }
+  }
+  return count;
+}
+console.log(countVowels("string"));
+
 // 2024-06-18
 // MIT 14
 // TASK J:
@@ -10,19 +34,19 @@
 // Yuqoridagi text tarkibida 'Uzbekistan'
 // eng uzun so'z bo'lganligi uchun 'Uzbekistan'ni qaytarmoqda
 
-function findLongestWord(str: string): string {
-  const words = str.split(" ");
+// function findLongestWord(str: string): string {
+//   const words = str.split(" ");
 
-  let longestWord = "";
+//   let longestWord = "";
 
-  for (const word of words) {
-    if (word.length > longestWord.length) {
-      longestWord = word;
-    }
-  }
-  return longestWord;
-}
-console.log(findLongestWord("I came from Uzbekistan!"));
+//   for (const word of words) {
+//     if (word.length > longestWord.length) {
+//       longestWord = word;
+//     }
+//   }
+//   return longestWord;
+// }
+// console.log(findLongestWord("I came from Uzbekistan!"));
 
 // MIT 14
 // TASK I:
