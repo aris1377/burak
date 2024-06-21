@@ -3,35 +3,30 @@
 
 //2 Express ni integratsiyasini amalga oshiramiz
 import express from "express";
-
 //path ni import qilib olamiz. Bu mongoDB ni core package
 import path from "path";
-
 //expressni 4 ta bolimi mavjud
 //1--ENTRANCE (kirish qismi)
 // EXPRESS ni chaqirib olamiz
 const app = express();
-
 //5*(router)-ROUTES ni chaqirib olamiz
 import router from "./router";
-
 //router adminni import qilib olamiz(restaurantController)
 import routerAdmin from "./router-admin"
-
 //moorganni import qilib olamiz
 import morgan from "morgan";
 import { MORGAN_FORMAT } from "./libs/config";
 
-//dirname ni qiymatini tekshirib olamiz va bizga ushbu qiymatini beradi
-//__dirname bu node.js ni variable hisoblanadi
-//dirname: C:\Users\bek77\Desktop\Burak\src
-// console.log("dirname:", __dirname);
+import session from "express-session";
+import ConnectMongoDB from "connect-mongodb-session";
 
-//3. middleverblarni integratsiyasini amalga oshiramiz
-//<App>ni < use > degan methodini chaqiramiz
-//bu middleverb pettern hisoblanadi
-//<(__dirname, "public"> bu narsa bizga static folderga aylantirib beradi
-// bizga kerakli bolgan image, css lar pulic folderini ichida boladi
+const MongoDBStore = ConnectMongoDB(session);
+const store = new MongoDBStore({
+    uri: String(process.env.MONGO_URL),
+    collection: "sessions",
+});
+
+//1-- ENTRANCE (kirish)
 app.use(express.static(path.join(__dirname, "public")));
 
 //bu <form> lardan malumot kesa kegan malumotlarni oqib beradi
@@ -45,13 +40,24 @@ app.use(express.json());
 app.use(morgan(MORGAN_FORMAT));
 
 //2--SESSIONS
+app.use(
+  session({
+    secret: String(process.env.SESSION_SECRET),
+    cookie: {
+      maxAge: 1000 * 3600 * 3,
+    },
+    store: store,
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
 
 //3-- VIEWS
 // expressni set qilamiz
 //yani express app imizda <views> sifatida ejs ni ishlatishni aytamiz
 // <path.join> qilib <__dirname> ni qabul qilib olib <views> folderiga yetaklaymiz
 app.set("views", path.join(__dirname, "views"));
-//bizning <wiew> engine miz aynan <ejs> eganligini qayt etamiz
 app.set("view engine", "ejs");
 //src folderini ichida views folderini yasab olamiz
 

@@ -1,4 +1,3 @@
-
 //memberController dan olayotganimiz uchun request va response ochirib yubordik
 import express from "express";
 
@@ -7,11 +6,6 @@ const routerAdmin = express.Router();
 
 //5*(memberController) import qilib olamiz
 import restaurantController from "./controllers/restaurant.controller";
-
-
-
-/** Restaurant*/
-//6*memberController.goHome methodini chaqiramiz
 routerAdmin.get("/", restaurantController.goHome);
 //7*memberController.getLogin methodini chaqiramiz
 routerAdmin
@@ -23,10 +17,5 @@ routerAdmin
   .get("/signup", restaurantController.getSignup)
   .post("/signup", restaurantController.processSignup);
 
-/**Product */
-/**User */
-
 //4. Roiterlarni ApiTS ga export qilamiz
 export default routerAdmin;
-
-
