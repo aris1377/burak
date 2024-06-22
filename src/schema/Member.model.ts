@@ -1,15 +1,7 @@
 // 1.moongoose ichidan schema degan qiymat xosil qilib olamiz
 import mongoose, { Schema } from "mongoose";
 import { MemberStatus, MemberType } from "../libs/enums/member.enum";
-// Schemalarni 2 xil usulda quramiz
-//1-schema first
-//2-code first
 
-// 2.Schema ni xosil qilib olamiz
-// schema ni chaqirib olamiz
-// va biz defenision qismini yozib olamiz
-// va ermodelingdab membersni type larini yozib olamiz\
-// memberSchema ni type class boaldi
 const memberSchema = new Schema(
   {
     memberType: {
