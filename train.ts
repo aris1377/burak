@@ -1,3 +1,21 @@
+// L-TASK: 
+
+// Shunday function yozing, 
+// u string qabul qilsin va string ichidagi hamma sozlarni chappasiga yozib va sozlar ketma - ketligini buzmasdan stringni qaytarsin.
+// MASALAN: reverseSentence("we like coding!") return "ew ekil gnidoc";
+
+function reverseSentence(words: string): string {
+  const new_word = words.split(" ");
+
+  const reversedWords = new_word.map((words) => {
+    return words.split("").reverse().join("");
+  });
+
+  return reversedWords.join(" ");
+}
+const result = reverseSentence("we like coding!");
+console.log(result);
+
 // 2024-06-21
 // MIT 14
 // TASK K:
@@ -10,17 +28,17 @@
 // Yuqoridagi misolda 'string' so'zi tarkibida yagona unli harf 'i'
 // bo'lganligi uchun '1'ni qaytarmoqda
 
-function countVowels(str: string): number {
-  const unliHarflar = "aeiouAEIOU";
-  let count = 0;
-  for (let i = 0; i < str.length; i++) {
-    if (unliHarflar.includes(str[i])) {
-      count++;
-    }
-  }
-  return count;
-}
-console.log(countVowels("string"));
+// function countVowels(str: string): number {
+//   const unliHarflar = "aeiouAEIOU";
+//   let count = 0;
+//   for (let i = 0; i < str.length; i++) {
+//     if (unliHarflar.includes(str[i])) {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
+// console.log(countVowels("string"));
 
 // 2024-06-18
 // MIT 14
