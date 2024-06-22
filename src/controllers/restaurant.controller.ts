@@ -124,7 +124,7 @@ restaurantController.verifyRestaurant = (
   } else {
     const message = Message.MOT_AUTHENTICATED;
     res.send(
-      `<script> alert ("${message}"); window.location.replace('/admin/login'); </script>`
+      `<script> alert ("${message}"); window.location.replace('/admin/login');</script>`
     );
   }
 };
