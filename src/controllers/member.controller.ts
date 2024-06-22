@@ -1,5 +1,4 @@
 //biz controllerlarni doim objectlar orqali xosil qilamiz.
-
 // router.ts dan kelyapti
 import { Request, Response } from "express";
 
