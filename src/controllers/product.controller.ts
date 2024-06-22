@@ -9,7 +9,7 @@ const productController: T = {};
 productController.getAllProducts = async (req: Request, res: Response) => {
   try {
     //qoyishdan sabab shunga qadar hech qanday muommo bolmagini tekshirish
-      console.log("getAllProducts");
+    console.log("getAllProducts");
       res.render("products");
   } catch (err) {
     console.log("Error, getAllProducts:", err);

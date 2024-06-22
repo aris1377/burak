@@ -1,5 +1,5 @@
 import { AdminRequest, LoginInput } from "./../libs/types/member";
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { T } from "../libs/types/common";
 import MemberService from "../models/Member.service";
 import { MemberInput } from "../libs/types/member";
@@ -106,12 +106,27 @@ restaurantController.checkAuthSession = async (
     console.log("checkAuthSession");
     if (req.session?.member)
       res.send(`<script> alert ("${req.session.member.memberNick}")</script>`);
-    else res.send(`<script> alert ("${Message.MOT_AUTHENTICATED}")</script>`);
+    else res.send(`<script> alert ("${Message.MOT_AUTHENTICATED}"); </script>`);
   } catch (err) {
     console.log("Error, getSignup:", err);
     res.send(err);
   }
 };
 
+restaurantController.verifyRestaurant = (
+  req: AdminRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  if (req.session?.member?.memberType === MemberType.RESTAURANT) {
+    req.member = req.session.member;
+    next();
+  } else {
+    const message = Message.MOT_AUTHENTICATED;
+    res.send(
+      `<script> alert ("${message}"); window.location.replace('/admin/login'); </script>`
+    );
+  }
+};
 //4. <memberController> routerda chaqirib olish uchun export qilib olamiz
 export default restaurantController;

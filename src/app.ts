@@ -1,24 +1,13 @@
-//1 Express ni ornatib olamiz va axpress typni ornatib olamiz
-//npm i express@4.17.3, npm i express@4.17.3 -D
-
-//2 Express ni integratsiyasini amalga oshiramiz
 import express from "express";
-//path ni import qilib olamiz. Bu mongoDB ni core package
 import path from "path";
-//expressni 4 ta bolimi mavjud
-//1--ENTRANCE (kirish qismi)
-// EXPRESS ni chaqirib olamiz
 const app = express();
-//5*(router)-ROUTES ni chaqirib olamiz
 import router from "./router";
-//router adminni import qilib olamiz(restaurantController)
 import routerAdmin from "./router-admin"
-//moorganni import qilib olamiz
 import morgan from "morgan";
 import { MORGAN_FORMAT } from "./libs/config";
-
 import session from "express-session";
 import ConnectMongoDB from "connect-mongodb-session";
+import { T } from "./libs/types/common";
 
 const MongoDBStore = ConnectMongoDB(session);
 const store = new MongoDBStore({
@@ -51,8 +40,11 @@ app.use(
     saveUninitialized: true,
   })
 );
-
-
+app.use(function (req, res, next) {
+  const sessionInstance = req.session as T;
+  res.locals.member = sessionInstance.member;
+  next();
+})
 //3-- VIEWS
 // expressni set qilamiz
 //yani express app imizda <views> sifatida ejs ni ishlatishni aytamiz
