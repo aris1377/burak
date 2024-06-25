@@ -1,14 +1,12 @@
-<%- include('includes/header') %>
-
+<%- include("includes/header.ejs")%>
 <body>
-  <div>
-    <div>PRODUCTS PAGE</div>
-    <div><%=member.memberNick%></div>
+  <div class="format-1">
+    <div>PRODUCT PAGE</div>
+    <div>I am <%=member.memberNick%></div>
 
-    <% products.map((value, key)=>{ %>
-      <p><%= value.productName %</p>
-    <% } )%>
+    <%products.map((value, key) => { %>
+    <p><%= product.productName%> - <%= product.productSize %></p>
+    <%})%>
   </div>
 </body>
-
-<%- include('includes/footer') %>
+<%- include("includes/footer.ejs")%>

@@ -1,20 +1,37 @@
-// L-TASK: 
-
-// Shunday function yozing, 
-// u string qabul qilsin va string ichidagi hamma sozlarni chappasiga yozib va sozlar ketma - ketligini buzmasdan stringni qaytarsin.
-// MASALAN: reverseSentence("we like coding!") return "ew ekil gnidoc";
-
-function reverseSentence(words: string): string {
-  const new_word = words.split(" ");
-
-  const reversedWords = new_word.map((words) => {
-    return words.split("").reverse().join("");
-  });
-
-  return reversedWords.join(" ");
+interface NumberSquare {
+  number: number;
+  square: number;
 }
-const result = reverseSentence("we like coding!");
+
+function getSquareNumbers(numbers: number[]): NumberSquare[] {
+  return numbers.map((num) => ({
+    number: num,
+    square: num * num,
+  }));
+}
+
+// Example usage
+const result = getSquareNumbers([1, 2, 3]);
 console.log(result);
+// Output: [{ number: 1, square: 1 }, { number: 2, square: 4 }, { number: 3, square: 9 }]
+
+// // L-TASK:
+
+// // Shunday function yozing,
+// // u string qabul qilsin va string ichidagi hamma sozlarni chappasiga yozib va sozlar ketma - ketligini buzmasdan stringni qaytarsin.
+// // MASALAN: reverseSentence("we like coding!") return "ew ekil gnidoc";
+
+// function reverseSentence(words: string): string {
+//   const new_word = words.split(" ");
+
+//   const reversedWords = new_word.map((words) => {
+//     return words.split("").reverse().join("");
+//   });
+
+//   return reversedWords.join(" ");
+// }
+// const result = reverseSentence("we like coding!");
+// console.log(result);
 
 // 2024-06-21
 // MIT 14
