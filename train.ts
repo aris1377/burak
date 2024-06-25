@@ -1,3 +1,13 @@
+// 2024-06-25
+// MIT 14
+// TASK M:
+
+// Shunday function tuzing, u raqamlardan tashkil topgan array qabul qilsin
+// va array ichidagi har bir raqam uchun raqamning o'zi va hamda o'sha raqamni kvadratidan
+// tashkil topgan object hosil qilib, hosil bo'lgan objectlarni array ichida qaytarsin
+
+// MASALAN: MASALAN: getSquareNumbers([1, 2, 3]) return [{number: 1, square: 1}, number: 2, square: 4 }, { number: 3, square: 9 }];
+
 interface NumberSquare {
   number: number;
   square: number;
