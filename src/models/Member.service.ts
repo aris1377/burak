@@ -64,6 +64,7 @@ class MemberService {
       const result = await this.memberModel.create(input);
       //memberPassword response da qatnashmasligi uchun
       result.memberPassword = "";
+      console.log("result:", result);
       return result as Member;
     } catch (err) {
       throw new Errors(HttpCode.BAD_REQUEST, Message.CREATE_FAILED);
