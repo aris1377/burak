@@ -6,12 +6,12 @@ import { ProductStatus } from "../libs/enums/product.enum";
 
 const productSchema = new Schema(
   {
-    ProductStatus: {
+    productStatus: {
       type: String,
       enum: ProductStatus,
       default: ProductStatus.PAUSE,
     },
-    ProductCollection: {
+    productCollection: {
       type: String,
       enum: ProductCollection,
       required: true,
@@ -36,7 +36,7 @@ const productSchema = new Schema(
     },
 
     productVolume: {
-      type: String,
+      type: Number,
       enum: ProductVolume,
       default: ProductVolume.ONE,
     },
@@ -46,7 +46,7 @@ const productSchema = new Schema(
       required: true,
     },
 
-    productImage: {
+    productImages: {
       type: [String],
       default: [],
     },

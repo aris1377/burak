@@ -8,6 +8,7 @@ const routerAdmin = express.Router();
 import restaurantController from "./controllers/restaurant.controller";
 import productController from "./controllers/product.controller";
 import makeUploader from "./libs/utils/uploader";
+
 routerAdmin.get("/", restaurantController.goHome);
 routerAdmin
   .get("/login", restaurantController.getLogin)
