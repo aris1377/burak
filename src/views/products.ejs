@@ -1,12 +1,10 @@
 <%- include("includes/header.ejs")%>
 <body>
-  <div class="format-1">
-    <div>PRODUCT PAGE</div>
-    <div>I am <%=member.memberNick%></div>
+  <div>PRODUCT PAGE</div>
+  <h3><%=member.memberNick%></h3>
 
-    <%products.map((value, key) => { %>
-    <p><%= product.productName%> - <%= product.productSize %></p>
-    <%})%>
-  </div>
+  <%products.map((value, key) => { %>
+  <p><%= value.productName %> - <%= value.productSize %></p>
+  <%})%>
 </body>
 <%- include("includes/footer.ejs")%>
