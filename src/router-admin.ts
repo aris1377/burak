@@ -8,6 +8,7 @@ const routerAdmin = express.Router();
 import restaurantController from "./controllers/restaurant.controller";
 import productController from "./controllers/product.controller";
 import makeUploader from "./libs/utils/uploader";
+import router from "./router";
 
 routerAdmin.get("/", restaurantController.goHome);
 routerAdmin
@@ -44,6 +45,10 @@ routerAdmin.post(
   restaurantController.verifyRestaurant,
   productController.updateChosenProduct
 );
+
+
+/** User */
+routerAdmin.get("/user/all", restaurantController.verifyRestaurant,restaurantController.getUsers)
 
 //4. Roiterlarni ApiTS ga export qilamiz
 export default routerAdmin;

@@ -93,5 +93,15 @@ class MemberService {
       .lean()
       .exec()) as Member;
   }
+
+  public async getUsers(): Promise<Member[] | any> {
+    const result = await this.memberModel
+      .find({ memberType: MemberType.USER })
+      .exec();
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+    
+    return result;
+  }
 }
+
 export default MemberService;
