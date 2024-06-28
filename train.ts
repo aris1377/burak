@@ -1,3 +1,31 @@
+// 2024-06-27
+// MIT 14
+// TASK N:
+
+// Parametr sifatida yagona string qabul qiladigan function tuzing.
+// Va bu function string'ni palindrom so'z yoki palindrom so'z emasligini aniqlab (boolean)
+// 'true' yokida 'false' qaytarsin.
+
+// MASALAN: palindromCheck("dad") return true; palindromCheck("son") return false;
+// Birinchi misolda 'dad' so'zini ikkala tarafdan o'qilganda ham bir xil ma'noni beradi (true)
+// Ikkinchi misolda 'son' so'zini ikkala tarafdan o'qilganda bir xil ma'noni bermaydi (false)
+
+// *Palindrom so'z deb o'ngdan chapga ham ~ chapdan o'ngga ham o'qilganda
+// bir xil ma'noni beradigan so'zga aytiladi
+
+function palindromeCheck(word: string): boolean {
+  
+    const cleanedWord = word.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+
+    const reversedWord = cleanedWord.split('').reverse().join('');
+    return cleanedWord === reversedWord;
+}
+
+// Examples
+console.log(palindromeCheck("dad")); // true
+console.log(palindromeCheck("son")); // false
+
+
 // 2024-06-25
 // MIT 14
 // TASK M:
@@ -8,21 +36,21 @@
 
 // MASALAN: MASALAN: getSquareNumbers([1, 2, 3]) return [{number: 1, square: 1}, number: 2, square: 4 }, { number: 3, square: 9 }];
 
-interface NumberSquare {
-  number: number;
-  square: number;
-}
+// interface NumberSquare {
+//   number: number;
+//   square: number;
+// }
 
-function getSquareNumbers(numbers: number[]): NumberSquare[] {
-  return numbers.map((num) => ({
-    number: num,
-    square: num * num,
-  }));
-}
+// function getSquareNumbers(numbers: number[]): NumberSquare[] {
+//   return numbers.map((num) => ({
+//     number: num,
+//     square: num * num,
+//   }));
+// }
 
-// Example usage
-const result = getSquareNumbers([1, 2, 3]);
-console.log(result);
+// // Example usage
+// const result = getSquareNumbers([1, 2, 3]);
+// console.log(result);
 // Output: [{ number: 1, square: 1 }, { number: 2, square: 4 }, { number: 3, square: 9 }]
 
 // // L-TASK:
