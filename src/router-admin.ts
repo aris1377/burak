@@ -46,9 +46,17 @@ routerAdmin.post(
   productController.updateChosenProduct
 );
 
-
 /** User */
-routerAdmin.get("/user/all", restaurantController.verifyRestaurant,restaurantController.getUsers)
+routerAdmin.get(
+  "/user/all",
+  restaurantController.verifyRestaurant,
+  restaurantController.getUsers
+);
+routerAdmin.post(
+  "/user/edit",
+  restaurantController.verifyRestaurant,
+  restaurantController.updateChosenUser
+);
 
 //4. Roiterlarni ApiTS ga export qilamiz
 export default routerAdmin;

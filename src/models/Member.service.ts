@@ -1,9 +1,10 @@
 import { MemberType } from "../libs/enums/member.enum";
-import { LoginInput, Member } from "./../libs/types/member";
+import { LoginInput, Member, MemberUpdateInput } from "./../libs/types/member";
 import MemberModel from "../schema/Member.model";
 import { MemberInput } from "../libs/types/member";
 import Errors, { HttpCode, Message } from "../libs/Errors";
 import * as bcrypt from "bcryptjs";
+import { shapeIntoMongooseObjecId } from "../libs/config";
 // schema va service modellarimizni har doim class lar orqali quramiz
 class MemberService {
   //propety kk boaldi
@@ -99,7 +100,18 @@ class MemberService {
       .find({ memberType: MemberType.USER })
       .exec();
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
-    
+
+    return result;
+  }
+  public async updateChosenUser(
+    input: MemberUpdateInput
+  ): Promise<Member[] | any> {
+    input._id = shapeIntoMongooseObjecId(input._id);
+    const result = await this.memberModel
+      .findByIdAndUpdate({ _id: input._id }, input, {new: true})
+      .exec();
+    if (!result) throw new Errors(HttpCode.NOT_MODIFIED, Message.UPDATE_FAILED);
+
     return result;
   }
 }
