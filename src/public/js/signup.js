@@ -1,6 +1,29 @@
 console.log("Signup frontend javascript file");
 
-$(function () {});
+$(function () {
+  const fileTarget = $(".file-box .upload-hidden");
+  let filename;
+
+  fileTarget.on("change", function () {
+    if (window.FileReader) {
+      const uploadFile = $(this)[0].files[0];
+      const fileType = uploadFile["type"];
+      const validMimeTypes = ["image/jpg", "image/jpeg", "image/png"];
+      if (!validMimeTypes.includes(fileType)) {
+        alert("Please insert only jpg, jpeg, png");
+      } else {
+        if (uploadFile) {
+          console.log(URL.createObjectURL(uploadFile));
+          $(".upload-img-frame")
+            .attr("src", URL.createObjectURL(uploadFile))
+            .addClass("success");
+        }
+        filename = $(this)[0].files[0].name;
+      }
+      $(this).siblings(".upload-name").val(filename);
+    }
+  });
+});
 
 function validateSignupForm() {
   const memberNick = $(".member-nick").val();
@@ -14,11 +37,19 @@ function validateSignupForm() {
     memberPassword === "" ||
     confirmPassword === ""
   ) {
-      alert("Please insert all required inputs");
-      return false;
+    alert("Please insert all required inputs");
+    return false;
   }
-    if (memberPassword !== confirmPassword) {
-        alert("Password differs, please check!")
-        return false;
-    }
+  if (memberPassword !== confirmPassword) {
+    alert("Password differs, please check!");
+    return false;
+  }
+
+  const memberImage = $(".member-image").get(0).files[0]
+    ? $(".member-image").get(0).files[0].name
+    : null;
+  if (!memberImage) {
+    alert("Please insert a restart image");
+    return false;
+  }
 }
