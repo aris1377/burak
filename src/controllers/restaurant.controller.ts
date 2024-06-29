@@ -43,6 +43,8 @@ restaurantController.processSignup = async (
   res: Response
 ) => {
   try {
+    console.log("processSignup");
+    console.log("req.body:", req.body);
     const file = req.file;
     console.log("processSignup:", file);
     if (!file)

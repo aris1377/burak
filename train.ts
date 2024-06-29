@@ -13,18 +13,17 @@
 // *Palindrom so'z deb o'ngdan chapga ham ~ chapdan o'ngga ham o'qilganda
 // bir xil ma'noni beradigan so'zga aytiladi
 
-function palindromeCheck(word: string): boolean {
-  
-    const cleanedWord = word.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+// function palindromeCheck(word: string): boolean {
 
-    const reversedWord = cleanedWord.split('').reverse().join('');
-    return cleanedWord === reversedWord;
-}
+//     const cleanedWord = word.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
 
-// Examples
-console.log(palindromeCheck("dad")); // true
-console.log(palindromeCheck("son")); // false
+//     const reversedWord = cleanedWord.split('').reverse().join('');
+//     return cleanedWord === reversedWord;
+// }
 
+// // Examples
+// console.log(palindromeCheck("dad")); // true
+// console.log(palindromeCheck("son")); // false
 
 // 2024-06-25
 // MIT 14
@@ -245,4 +244,10 @@ console.log(palindromeCheck("son")); // false
 /**
  Traditional FD -> SSR -> EJS
  Modern FD      -> SPA -> REACT (LIBERY)
+ */
+
+/**validation
+ frontend 
+ backend
+ database
  */
