@@ -13,7 +13,7 @@ productController.getAllProducts = async (req: Request, res: Response) => {
     //qoyishdan sabab shunga qadar hech qanday muommo bolmagini tekshirish
     console.log("getAllProducts");
     const data = await productService.getAllProducts();
-    console.log("products:",data);
+    console.log("products:", data);
 
     console.log("data:", data);
     res.render("products", { products: data });
@@ -41,14 +41,14 @@ productController.createNewProduct = async (
 
     await productService.createNewProduct(data);
     res.send(
-      `<script> alert("Sucessful creation!"); window.location.replace('admin/product/all') </script>`
+      `<script> alert("Sucessful creation!"); window.location.replace('/admin/product/all') </script>`
     );
   } catch (err) {
     console.log("Error, createNewProduct:", err);
     const message =
       err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
     res.send(
-      `<script> alert("${message}"); window.location.replace('admin/product/all') </script>`
+      `<script> alert("${message}"); window.location.replace('/admin/product/all') </script>`
     );
   }
 };
