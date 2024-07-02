@@ -13,6 +13,8 @@ productController.getAllProducts = async (req: Request, res: Response) => {
     //qoyishdan sabab shunga qadar hech qanday muommo bolmagini tekshirish
     console.log("getAllProducts");
     const data = await productService.getAllProducts();
+    console.log("products:",data);
+
     console.log("data:", data);
     res.render("products", { products: data });
   } catch (err) {
