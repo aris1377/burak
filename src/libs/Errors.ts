@@ -18,17 +18,14 @@ export enum Message {
 
   USED_NICK_PHONE = "You are inserting already used nick or phone!",
   NO_MEMEBER_NICK = "No member with that member nick!",
+  BLOCKED_USER = "You have been blocked, contact restaurant!",
   WRONG_PASSWORD = "Wrong password, please try again!",
   MOT_AUTHENTICATED = "You are not authorized, Please login first!",
 }
-//inheritance bilan ishlaymiz
-//error lar classi xosil qilamiz
-//javascript ichida build qilingan errorlarga extend bolsin diyapmiz
+
 class Errors extends Error {
-  //2 ta property beriladi
-  // code yuqoridagi enumni qabul qiladi
   public code: HttpCode;
-  // message yuqoridagi message qabul qiladi
+
   public message: Message;
 
   static standard = {

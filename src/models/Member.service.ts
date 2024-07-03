@@ -1,3 +1,4 @@
+import { MemberStatus } from "./../libs/enums/member.enum";
 import { MemberType } from "../libs/enums/member.enum";
 import { LoginInput, Member, MemberUpdateInput } from "./../libs/types/member";
 import MemberModel from "../schema/Member.model";
@@ -32,11 +33,17 @@ class MemberService {
   public async login(input: LoginInput): Promise<Member> {
     const member = await this.memberModel
       .findOne(
-        { memberNick: input.memberNick },
-        { memberNick: 1, memberPassword: 1 }
+        {
+          memberNick: input.memberNick,
+          memberStatus: { $ne: MemberStatus.DELETE },
+        },
+        { memberNick: 1, memberPassword: 1, memberStatus: 1 }
       )
       .exec();
     if (!member) throw new Errors(HttpCode.NOT_FOUND, Message.NO_MEMEBER_NICK);
+    else if (member.memberStatus === MemberStatus.BLOCK) {
+      throw new Errors(HttpCode.FORBIDDEN, Message.BLOCKED_USER);
+    }
 
     const isMatch = await bcrypt.compare(
       input.memberPassword,
@@ -108,7 +115,7 @@ class MemberService {
   ): Promise<Member[] | any> {
     input._id = shapeIntoMongooseObjecId(input._id);
     const result = await this.memberModel
-      .findByIdAndUpdate({ _id: input._id }, input, {new: true})
+      .findByIdAndUpdate({ _id: input._id }, input, { new: true })
       .exec();
     if (!result) throw new Errors(HttpCode.NOT_MODIFIED, Message.UPDATE_FAILED);
 
