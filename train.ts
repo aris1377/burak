@@ -1,19 +1,35 @@
+// 2024-07-02
+// MIT 14
+// TASK P:
+
+// Parametr sifatida yagona object qabul qiladigan function yozing.
+// Qabul qilingan objectni nested array sifatida convert qilib qaytarsin
+
+// MASALAN: objectToArray( {a: 10, b: 20}) return [['a', 10], ['b', 20]]
+
+function objectToArray(obj: Record<string, any>): [string, any][] {
+  return Object.entries(obj);
+}
+
+const obj = { a: 10, b: 20 };
+const result = objectToArray(obj);
+console.log(result);
+
 //O-TASK:
 
 //Shunday function yozing, u har xil valuelardan iborat array qabul qilsin
- //array ichidagi sonlar yigindisini hisoblab chiqqan javobni qaytarsin.
+//array ichidagi sonlar yigindisini hisoblab chiqqan javobni qaytarsin.
 //MASALAN: calculateSumOfNumbers([10, "10", {son: 10}, true, 35]) return 45
 
-function calculateSumOfNumbers(arr: any[]): number {
-    return arr.reduce((sum, item) => {
-        if (typeof item === 'number') {
-            return sum + item;
-        }
-        return sum;
-    }, 0);
-}
-console.log(calculateSumOfNumbers([10, "10", {son: 10}, true, 35])); 
-
+// function calculateSumOfNumbers(arr: any[]): number {
+//     return arr.reduce((sum, item) => {
+//         if (typeof item === 'number') {
+//             return sum + item;
+//         }
+//         return sum;
+//     }, 0);
+// }
+// console.log(calculateSumOfNumbers([10, "10", {son: 10}, true, 35]));
 
 // 2024-06 - 27
 // MIT 14
