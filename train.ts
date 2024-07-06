@@ -1,3 +1,16 @@
+// Shunday function yozing,
+// u string parametrga ega bolsin.String "1+2" holatda pass qilinganda
+// string ichidagi sonlar yigindisini number holatda qaytarsin.
+// MASALAN: calculate("1+3") return 4;
+
+function calculate(num: string): number{
+  const numbers = num.split("+").map(Number);
+  const sum = numbers.reduce((acc, num) => acc + num, 0);
+  return sum;
+}
+const result = calculate("1+3");
+console.log(result);
+
 // 2024-07-05
 // MIT 14 TASK Q:
 
@@ -13,11 +26,11 @@
 // Ushbu misolda, ikkinchi argument sifatida berilayotgan 'year' objectning
 // propertysida mavjud bo'lmaganligi uchun 'false' natijani qaytarmoqda.
 
-function hasProperty(obj: object, prop: string): boolean {
-  return obj.hasOwnProperty(prop);
-}
-console.log(hasProperty({ name: "BMW", model: "M3" }, "model")); // true
-console.log(hasProperty({ name: "BMW", model: "M3" }, "year")); // false
+// function hasProperty(obj: object, prop: string): boolean {
+//   return obj.hasOwnProperty(prop);
+// }
+// console.log(hasProperty({ name: "BMW", model: "M3" }, "model")); // true
+// console.log(hasProperty({ name: "BMW", model: "M3" }, "year")); // false
 
 // 2024-07-02
 // MIT 14

@@ -1,8 +1,5 @@
-//1. dotenv package ichidan <dotenv> ni cha1irib berishni sorayapmiz
-import dotenv from "dotenv";
 
-//2. documentionga qarasak <dotenv> ni <config> degan methodi mavjud va usha <config> methodini excuit qilyapmiz
-//biz dotenv varibillarni intragatsiyalini amalga oshirdik
+import dotenv from "dotenv";
 dotenv.config();
 import mongoose from "mongoose";
 import app from "./app";
