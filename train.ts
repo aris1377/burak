@@ -1,15 +1,38 @@
+// 2024-07-08
+// MIT 14
+// TASK S
+
+// Shunday function tuzing, u numberlardan tashkil topgan array qabul qilsin
+// va o'sha numberlar orasidagi tushib qolgan sonni topib uni return qilsin.
+
+// MASALAN: missingNumber([3, 0, 1]); return 2
+
+// Yuqoridagi misolda, berilayotgan sonlar tarkibini tartiblasak
+// '2' soni tushib qolgan
+
+function missingNumber(nums: number[]): number {
+    const n = nums.length;
+    const totalSum = (n * (n + 1)) / 2;
+    const arraySum = nums.reduce((acc, num) => acc + num, 0);
+    return totalSum - arraySum;
+}
+
+// Misol
+console.log(missingNumber([3, 0, 1])); 
+
+
 // Shunday function yozing,
 // u string parametrga ega bolsin.String "1+2" holatda pass qilinganda
 // string ichidagi sonlar yigindisini number holatda qaytarsin.
 // MASALAN: calculate("1+3") return 4;
 
-function calculate(num: string): number{
-  const numbers = num.split("+").map(Number);
-  const sum = numbers.reduce((acc, num) => acc + num, 0);
-  return sum;
-}
-const result = calculate("1+3");
-console.log(result);
+// function calculate(num: string): number{
+//   const numbers = num.split("+").map(Number);
+//   const sum = numbers.reduce((acc, num) => acc + num, 0);
+//   return sum;
+// }
+// const result = calculate("1+3");
+// console.log(result);
 
 // 2024-07-05
 // MIT 14 TASK Q:
