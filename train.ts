@@ -1,3 +1,44 @@
+// Shunday function yozing, 
+//u sonlardan tashkil topgan 2 ta array qabul qilsin 
+// va ikkala arraydagi sonlarni tartiblab bir arrayda qaytarsin
+// MASALAN: mergeSortedArrays([0,3,4,31], [4,6,30]); return [0,3,4,4,6,30,31]
+
+
+function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
+  const mergedArray: number[] = [];
+  let i = 0,
+    j = 0;
+
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] < arr2[j]) {
+      mergedArray.push(arr1[i]);
+      i++;
+    } else {
+      mergedArray.push(arr2[j]);
+      j++;
+    }
+  }
+
+ 
+  while (i < arr1.length) {
+    mergedArray.push(arr1[i]);
+    i++;
+  }
+
+  while (j < arr2.length) {
+    mergedArray.push(arr2[j]);
+    j++;
+  }
+
+  return mergedArray;
+}
+
+
+const array1 = [0, 3, 4, 31];
+const array2 = [4, 6, 30];
+const mergedArray = mergeSortedArrays(array1, array2);
+console.log(mergedArray); 
+
 // 2024-07-08
 // MIT 14
 // TASK S
@@ -10,16 +51,15 @@
 // Yuqoridagi misolda, berilayotgan sonlar tarkibini tartiblasak
 // '2' soni tushib qolgan
 
-function missingNumber(nums: number[]): number {
-    const n = nums.length;
-    const totalSum = (n * (n + 1)) / 2;
-    const arraySum = nums.reduce((acc, num) => acc + num, 0);
-    return totalSum - arraySum;
-}
+// function missingNumber(nums: number[]): number {
+//     const n = nums.length;
+//     const totalSum = (n * (n + 1)) / 2;
+//     const arraySum = nums.reduce((acc, num) => acc + num, 0);
+//     return totalSum - arraySum;
+// }
 
-// Misol
-console.log(missingNumber([3, 0, 1])); 
-
+// // Misol
+// console.log(missingNumber([3, 0, 1]));
 
 // Shunday function yozing,
 // u string parametrga ega bolsin.String "1+2" holatda pass qilinganda
