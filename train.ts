@@ -21,7 +21,7 @@ function sumOdds(num: number): number {
   }
   return count;
 }
-
+//
 console.log(sumOdds(9)); // 4
 console.log(sumOdds(11)); // 5
 
