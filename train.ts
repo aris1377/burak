@@ -1,3 +1,25 @@
+// V-TASK:
+
+// Shunday function yozing, uni string parametri bolsin 
+// va stringdagi harf va u harf necha marta takrorlangani sonidan tashkil topgan object qaytarsin.
+// MASALAN: countChars("hello") return {h: 1, e: 1, l: 2, o: 1}
+
+function countChars(str: string): Record<string, number> {
+  const charCount: Record<string, number> = {};
+
+  for (const char of str) {
+    if (char in charCount) {
+      charCount[char]++;
+    } else {
+      charCount[char] = 1;
+    }
+  }
+
+  return charCount;
+}
+
+console.log(countChars("hello"));
+
 // 2024-07-13
 // MIT 14
 // TASK U
@@ -12,18 +34,18 @@
 // Va 0'dan boshlab sanaganda 9'gacha 4'ta toq son mavjud.
 // Keyingi namunada ham xuddi shunday xolat takrorlanmoqda.
 
-function sumOdds(num: number): number {
-  let count = -1;
-  for (let i = 0; i <= num; i++) {
-    if (i % 2 !== 0) {
-      count++;
-    }
-  }
-  return count;
-}
-//
-console.log(sumOdds(9)); // 4
-console.log(sumOdds(11)); // 5
+// function sumOdds(num: number): number {
+//   let count = -1;
+//   for (let i = 0; i <= num; i++) {
+//     if (i % 2 !== 0) {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
+// //
+// console.log(sumOdds(9)); // 4
+// console.log(sumOdds(11)); // 5
 
 // Shunday function yozing,
 //u sonlardan tashkil topgan 2 ta array qabul qilsin
