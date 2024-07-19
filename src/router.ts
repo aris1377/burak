@@ -1,4 +1,3 @@
-
 //memberController dan olayotganimiz uchun request va response ochirib yubordik
 import express from "express";
 
@@ -6,15 +5,21 @@ import express from "express";
 const router = express.Router();
 
 //5*(memberController) import qilib olamiz
-import memberController from './controllers/member.controller';
-
+import memberController from "./controllers/member.controller";
 
 /**Memebr */
 router.post("/member/login", memberController.login);
 router.post("/member/signup", memberController.signup);
-router.post("/member/logout", memberController.verifyAuth, memberController.logout);
-router.get("/member/detail", memberController.verifyAuth);
-  
+router.post(
+  "/member/logout",
+  memberController.verifyAuth,
+  memberController.logout
+);
+router.get(
+  "/member/detail",
+  memberController.verifyAuth,
+  memberController.getMemberDetail
+);
 
 /**Product */
 
