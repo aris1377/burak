@@ -23,7 +23,7 @@ class MemberService {
       const result = await this.memberModel.create(input);
       //memberPassword response da qatnashmasligi uchun
       result.memberPassword = "";
-      return result as Member;
+      return result.toJSON() as Member;
     } catch (err) {
       console.error("Error, model:signup", err);
       throw new Errors(HttpCode.BAD_REQUEST, Message.USED_NICK_PHONE);
@@ -53,7 +53,10 @@ class MemberService {
     if (!isMatch) {
       throw new Errors(HttpCode.BAD_REQUEST, Message.WRONG_PASSWORD);
     }
-    return (await this.memberModel.findById(member._id).exec()) as Member;
+    return (await this.memberModel
+      .findById(member._id)
+      .lean()
+      .exec()) as Member;
   }
 
   /** SSR */
