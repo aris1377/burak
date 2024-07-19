@@ -1,24 +1,55 @@
+// TASK W
+
+// Shunday function yozing, u o'ziga parametr sifatida
+// yagona array va number qabul qilsin. Siz tuzgan function
+// arrayni numberda berilgan uzunlikda kesib bo'laklarga
+// ajratgan holatida qaytarsin.
+
+// MASALAN: chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3);
+// return [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]];
+
+// Yuqoridagi namunada berilayotgan array ikkinchi parametr 3'ga
+// asoslanib 3 bo'lakga bo'linib qaytmoqda. Qolgani esa o'z holati qolyapti
+
+function chunkArray(arr: any[], chunkSize: number): any[][] {
+    let result: any[][] = [];
+    
+    for (let i = 0; i < arr.length; i += chunkSize) {
+        result.push(arr.slice(i, i + chunkSize));
+    }
+    
+    return result;
+}
+
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const chunkSize = 3;
+
+const chunkedArray = chunkArray(array, chunkSize);
+console.log(chunkedArray); 
+
+
+
 // V-TASK:
 
-// Shunday function yozing, uni string parametri bolsin 
+// Shunday function yozing, uni string parametri bolsin
 // va stringdagi harf va u harf necha marta takrorlangani sonidan tashkil topgan object qaytarsin.
 // MASALAN: countChars("hello") return {h: 1, e: 1, l: 2, o: 1}
 
-function countChars(str: string): Record<string, number> {
-  const charCount: Record<string, number> = {};
+// function countChars(str: string): Record<string, number> {
+//   const charCount: Record<string, number> = {};
 
-  for (const char of str) {
-    if (char in charCount) {
-      charCount[char]++;
-    } else {
-      charCount[char] = 1;
-    }
-  }
+//   for (const char of str) {
+//     if (char in charCount) {
+//       charCount[char]++;
+//     } else {
+//       charCount[char] = 1;
+//     }
+//   }
 
-  return charCount;
-}
+//   return charCount;
+// }
 
-console.log(countChars("hello"));
+// console.log(countChars("hello"));
 
 // 2024-07-13
 // MIT 14
