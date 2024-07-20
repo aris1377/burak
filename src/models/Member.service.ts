@@ -69,6 +69,19 @@ class MemberService {
     return result as Member;
   }
 
+  public async updateMember(
+    member: Member,
+    input: MemberUpdateInput
+  ): Promise<Member> {
+    const memberId = shapeIntoMongooseObjecId(member._id);
+    const result = await this.memberModel
+      .findOneAndUpdate({ _id: memberId }, input, { new: true })
+      .exec();
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+
+    return result as Member;
+  }
+
   /** SSR */
   public async processSignup(input: MemberInput): Promise<Member> {
     //faqat bitta restaran kiritilish uchun mantiq yozamiz

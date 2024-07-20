@@ -1,11 +1,7 @@
-//memberController dan olayotganimiz uchun request va response ochirib yubordik
 import express from "express";
-
-//2. Router variable ni xosil qilamiz va express dan foydalanamiz, bizga aytilganidek doc da <ROUTER> variable ni chaqirib olamiz.
 const router = express.Router();
-
-//5*(memberController) import qilib olamiz
 import memberController from "./controllers/member.controller";
+import uploader from "./libs/utils/uploader";
 
 /**Memebr */
 router.post("/member/login", memberController.login);
@@ -19,6 +15,13 @@ router.get(
   "/member/detail",
   memberController.verifyAuth,
   memberController.getMemberDetail
+);
+
+router.post(
+  "/member/update",
+  memberController.verifyAuth,
+  uploader("members").single("memberImage"),
+  memberController.updateMember
 );
 
 /**Product */
