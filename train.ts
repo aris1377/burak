@@ -1,3 +1,39 @@
+// TASK X
+
+// Shunday function yozing, uni object va string parametrlari bo'lsin.
+// Bu function, birinchi object parametri tarkibida, kalit sifatida ikkinchi string parametri
+// necha marotaba takrorlanganlini sanab qaytarsin.
+
+// Eslatma => Nested object'lar ham sanalsin
+
+// MASALAN: countOccurrences({model: 'Bugatti', steer: {model: 'HANKOOK', size: 30}}, 'model') return 2
+
+// Yuqoridagi misolda, birinchi argument object, ikkinchi argument 'model'.
+// Funktsiya, shu ikkinchi argument 'model', birinchi argument object
+// tarkibida kalit sifatida 2 marotaba takrorlanganligi uchun 2 soni return qilmoqda
+
+function countOccurrences(obj: any, key: string): number {
+  let count = 0;
+
+  function recurse(obj: any) {
+    for (let k in obj) {
+      if (k === key) {
+        count++;
+      }
+      if (typeof obj[k] === "object" && obj[k] !== null) {
+        recurse(obj[k]);
+      }
+    }
+  }
+
+  recurse(obj);
+  return count;
+}
+
+const example = { model: "Bugatti", steer: { model: "HANKOOK", size: 30 } };
+const result = countOccurrences(example, "model");
+console.log(result);
+
 // TASK W
 
 // Shunday function yozing, u o'ziga parametr sifatida
@@ -11,23 +47,21 @@
 // Yuqoridagi namunada berilayotgan array ikkinchi parametr 3'ga
 // asoslanib 3 bo'lakga bo'linib qaytmoqda. Qolgani esa o'z holati qolyapti
 
-function chunkArray(arr: any[], chunkSize: number): any[][] {
-    let result: any[][] = [];
-    
-    for (let i = 0; i < arr.length; i += chunkSize) {
-        result.push(arr.slice(i, i + chunkSize));
-    }
-    
-    return result;
-}
+// function chunkArray(arr: any[], chunkSize: number): any[][] {
+//     let result: any[][] = [];
 
-const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const chunkSize = 3;
+//     for (let i = 0; i < arr.length; i += chunkSize) {
+//         result.push(arr.slice(i, i + chunkSize));
+//     }
 
-const chunkedArray = chunkArray(array, chunkSize);
-console.log(chunkedArray); 
+//     return result;
+// }
 
+// const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// const chunkSize = 3;
 
+// const chunkedArray = chunkArray(array, chunkSize);
+// console.log(chunkedArray);
 
 // V-TASK:
 

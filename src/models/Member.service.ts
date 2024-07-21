@@ -19,6 +19,9 @@ class MemberService {
       .findOne({ memberType: MemberType.RESTAURANT })
       .lean()
       .exec();
+    // return {
+    //   ...result,target: "David bro"
+    // } as Member;
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
     return result as Member;
   }
