@@ -8,13 +8,21 @@ import * as bcrypt from "bcryptjs";
 import { shapeIntoMongooseObjecId } from "../libs/config";
 // schema va service modellarimizni har doim class lar orqali quramiz
 class MemberService {
-  //propety kk boaldi
   private readonly memberModel;
   constructor() {
     this.memberModel = MemberModel;
   }
 
   /**SPA */
+  public async getRestaurant(): Promise<Member> {
+    const result = await this.memberModel
+      .findOne({ memberType: MemberType.RESTAURANT })
+      .lean()
+      .exec();
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+    return result as Member;
+  }
+
   public async signup(input: MemberInput): Promise<Member> {
     const salt = await bcrypt.genSalt();
     input.memberPassword = await bcrypt.hash(input.memberPassword, salt);
