@@ -10,6 +10,7 @@ import {
 import ProductModel from "../schema/Product.model";
 import { T } from "../libs/types/common";
 import { ProductStatus } from "../libs/enums/product.enum";
+import { ObjectId } from "mongoose";
 
 class ProductService {
   private readonly productModel;
@@ -24,7 +25,7 @@ class ProductService {
     console.log("inquiry:", inquiry);
     const match: T = { productStatus: ProductStatus.PROCESS };
     if (inquiry.search) {
-      match.productName = {$regex: new RegExp(inquiry.search, 'i')};
+      match.productName = { $regex: new RegExp(inquiry.search, "i") };
     }
 
     if (inquiry.productCollection)
@@ -46,6 +47,23 @@ class ProductService {
     if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
 
     return result;
+  }
+
+  public async getProduct(
+    memberId: ObjectId | null,
+    id: string
+  ): Promise<Product | any> {
+    const productId = shapeIntoMongooseObjecId(id);
+
+    let result = await this.productModel
+      .findOne({
+        _id: productId,
+        productStatus: ProductStatus.PROCESS,
+      })
+      .exec();
+    if (!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+
+    return result as Product;
   }
 
   /** SSR */
