@@ -17,7 +17,7 @@ export interface Order {
   orderTotal: number;
   orderDelivery: number;
   orderStatus: OrderStatus;
-  memberId: Date;
+  memberId: ObjectId;
   createdAt: Date;
   updateAt: Date;
   /**from aggregation */
@@ -28,7 +28,7 @@ export interface Order {
 export interface OrderItemInput {
   itemQuantity: number;
   itemPrice: number;
-  productId: Object;
+  productId: ObjectId;
   orderId?: ObjectId;
 }
 
@@ -38,7 +38,7 @@ export interface OrderInquiry {
   orderStatus: OrderStatus;
 }
 
-export interface OrderUpdateInput { 
-    orderId: string;
-    orderStatus: OrderStatus;
+export interface OrderUpdateInput {
+  orderId: string;
+  orderStatus: OrderStatus;
 }
