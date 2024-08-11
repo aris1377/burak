@@ -1,21 +1,44 @@
+// ZH-TASK:
+
+// Shunday function yozing, u berilgan array parametrni ichidagi eng katta raqamgacha tushib qolgan
+// raqamlarni bir arrayda qaytarsin.
+// MASALAN: findDisappearedNumbers([1, 3, 4, 7]) return [2, 5, 6]
+
+function findDisappearedNumbers(arr: number[]): number[] {
+    const maxNum = Math.max(...arr);
+    const missingNumbers: number[] = [];
+
+    for (let i = 1; i <= maxNum; i++) {
+        if (!arr.includes(i)) {
+            missingNumbers.push(i);
+        }
+    }
+
+    return missingNumbers;
+}
+
+// Misol uchun:
+console.log(findDisappearedNumbers([1, 3, 4, 7])); // [2, 5, 6]
+
+
 // ZG-TASK:
 
 // Shunday function yozing, u berilgan string parametrni snake casega otkazib qaytarsin.
 // MASALAN: capitalizeWords('name should be a string') return 'name_should_be_a_string'
 
 
-function capitalizeWords(str: string): string {
-    // 1. Barcha harflarni kichik harflarga o'tkazamiz
-    const lowerCased = str.toLowerCase();
+// function capitalizeWords(str: string): string {
+//     // 1. Barcha harflarni kichik harflarga o'tkazamiz
+//     const lowerCased = str.toLowerCase();
     
-    // 2. So'zlar orasidagi bo'shliqlarni "_" bilan almashtiramiz
-    const snakeCased = lowerCased.replace(/\s+/g, '_');
+//     // 2. So'zlar orasidagi bo'shliqlarni "_" bilan almashtiramiz
+//     const snakeCased = lowerCased.replace(/\s+/g, '_');
 
-    return snakeCased;
-}
+//     return snakeCased;
+// }
 
-// Misol
-console.log(capitalizeWords('name should be a string')); // 'name_should_be_a_string'
+// // Misol
+// console.log(capitalizeWords('name should be a string')); // 'name_should_be_a_string'
 
 // ZF-TASK:
 
