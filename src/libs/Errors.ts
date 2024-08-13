@@ -1,6 +1,5 @@
-// bu yerda enum va inheretance bilan ishlaymiz
+
 export enum HttpCode {
-  //eng kop uchraydigan http kodlar
   OK = 200,
   CREATED = 201,
   NOT_MODIFIED = 304,
@@ -35,13 +34,10 @@ class Errors extends Error {
   };
 
   constructor(statusCode: HttpCode, statusMessage: Message) {
-    //superclassga tegishli malumotlarni yozamiiz
     super();
     this.code = statusCode;
     this.message = statusMessage;
   }
 }
 
-//export qilib olamiz
-//bularni biz sugnup va login qisimida aniq tishunib olamiz
 export default Errors;

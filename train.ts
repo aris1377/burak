@@ -1,36 +1,54 @@
+// TASK ZI
+
+// Shundan function yozing, bu function 3 soniydan so'ng
+// "Hello World!" so'zini qaytarsin.
+
+// MASALAN: delayHelloWorld("Hello World"); return "Hello World";
+
+function delayHelloWorld(message: string): Promise<string> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(message);
+    }, 3000); // 3 soniya kechikish
+  });
+}
+
+// Funksiyani chaqirish:
+delayHelloWorld("Hello World").then((result) => {
+  console.log(result);
+});
+
 // ZH-TASK:
 
 // Shunday function yozing, u berilgan array parametrni ichidagi eng katta raqamgacha tushib qolgan
 // raqamlarni bir arrayda qaytarsin.
 // MASALAN: findDisappearedNumbers([1, 3, 4, 7]) return [2, 5, 6]
 
-function findDisappearedNumbers(arr: number[]): number[] {
-    const maxNum = Math.max(...arr);
-    const missingNumbers: number[] = [];
+// function findDisappearedNumbers(arr: number[]): number[] {
+//     const maxNum = Math.max(...arr);
+//     const missingNumbers: number[] = [];
 
-    for (let i = 1; i <= maxNum; i++) {
-        if (!arr.includes(i)) {
-            missingNumbers.push(i);
-        }
-    }
+//     for (let i = 1; i <= maxNum; i++) {
+//         if (!arr.includes(i)) {
+//             missingNumbers.push(i);
+//         }
+//     }
 
-    return missingNumbers;
-}
+//     return missingNumbers;
+// }
 
-// Misol uchun:
-console.log(findDisappearedNumbers([1, 3, 4, 7])); // [2, 5, 6]
-
+// // Misol uchun:
+// console.log(findDisappearedNumbers([1, 3, 4, 7])); // [2, 5, 6]
 
 // ZG-TASK:
 
 // Shunday function yozing, u berilgan string parametrni snake casega otkazib qaytarsin.
 // MASALAN: capitalizeWords('name should be a string') return 'name_should_be_a_string'
 
-
 // function capitalizeWords(str: string): string {
 //     // 1. Barcha harflarni kichik harflarga o'tkazamiz
 //     const lowerCased = str.toLowerCase();
-    
+
 //     // 2. So'zlar orasidagi bo'shliqlarni "_" bilan almashtiramiz
 //     const snakeCased = lowerCased.replace(/\s+/g, '_');
 
@@ -42,8 +60,8 @@ console.log(findDisappearedNumbers([1, 3, 4, 7])); // [2, 5, 6]
 
 // ZF-TASK:
 
-// Shunday function yozing, uni string parametri bolsin. 
-// String ichidagi har bir sozni bosh harflarini katta harf qilib qaytarsin lekin 
+// Shunday function yozing, uni string parametri bolsin.
+// String ichidagi har bir sozni bosh harflarini katta harf qilib qaytarsin lekin
 // 1 yoki 2 harfdan iborat sozlarni esa oz holicha qoldirsin.
 // MASALAN: capitalizeWords('name should be a string') return 'Name Should be a String
 
